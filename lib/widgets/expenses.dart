@@ -11,22 +11,32 @@ class Expenses extends StatefulWidget {
   }
 }
 
-class _ExpensesState extends State<Expenses>{
+class _ExpensesState extends State<Expenses> {
   final List<Expense> _registeredExpenses = [
-    Expense(title: 'Flutter course', amount: 19.99, date: DateTime.now(), category: Category.work), 
-    Expense(title: 'Cinema', amount: 15.69, date: DateTime.now(), category: Category.leisure)
+    Expense(
+        title: 'Flutter course',
+        amount: 19.99,
+        date: DateTime.now(),
+        category: Category.work),
+    Expense(
+        title: 'Cinema',
+        amount: 15.69,
+        date: DateTime.now(),
+        category: Category.leisure)
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Flutter Expense Tracker"),
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.add))],
+      ),
       body: Column(
         children: [
-          const Text('The chart'), 
+          const Text('The chart'),
           Expanded(child: ExpensesList(expenses: _registeredExpenses)),
         ],
-
-      )
-      ,);
+      ),
+    );
   }
-
 }
